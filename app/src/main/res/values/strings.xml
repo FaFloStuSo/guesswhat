@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Guess What?!</string>
+    <string name="gamemode_1_button">Normales Spiel</string>
+    <string name="settings_button">Settings</string>
 </resources>
