@@ -16,11 +16,13 @@
         app:layout_constraintTop_toTopOf="parent" >
 
         <Button
+            android:id="@+id/start_game_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="@string/start_game_button"/>
+            android:text="@string/gamemode_1_button"/>
 
         <Button
+            android:id="@+id/settings_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/settings_button"/>
