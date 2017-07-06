@@ -55,15 +55,21 @@ public class GameService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
+<<<<<<< HEAD
         //set mGamemode if game is not active
         if (!mStarted){
              this.mGamemode = intent.getByteExtra(GAMEMODE, (byte) 0 );
         }
+=======
+
+        Log.w("Test", "GameService Startet");
+>>>>>>> 68a6840... added a Game Service
 
         //runs as long as it is not explicitly stopped
         return Service.START_STICKY;
     }
 
+<<<<<<< HEAD
     /**
      * Class used for the client Binder, so clients can access public methods of GameService
      */
@@ -118,4 +124,11 @@ public class GameService extends Service {
         return pointsForDeceiving;
     }
 
+=======
+    @Override
+    public IBinder onBind(Intent intent) {
+        // TODO: Return the communication channel to the service.
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+>>>>>>> 68a6840... added a Game Service
 }

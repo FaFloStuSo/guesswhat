@@ -16,6 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name="io.github.faflostuso.guesswhat.gamelogic.GameService"
+            android:enabled="true"
+            android:exported="true"></service>
         <activity android:name=".SelectAnswerActivity"></activity>
 
         <service
