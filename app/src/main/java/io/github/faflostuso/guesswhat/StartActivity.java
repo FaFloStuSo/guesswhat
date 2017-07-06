@@ -1,12 +1,10 @@
 package io.github.faflostuso.guesswhat;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import io.github.faflostuso.guesswhat.gamelogic.Game;
 import io.github.faflostuso.guesswhat.gamelogic.GameService;
 
 public class StartActivity extends AppCompatActivity {
@@ -30,7 +28,7 @@ public class StartActivity extends AppCompatActivity {
 
             switch(v.getId()) {
                 case R.id.gamemode_1_button:
-                    i.putExtra(GameService.GAMEMODE, Game.GAMEMODE_1);
+                    i.putExtra(GameService.GAMEMODE, GameService.GAMEMODE_1);
                     break;
             }
 

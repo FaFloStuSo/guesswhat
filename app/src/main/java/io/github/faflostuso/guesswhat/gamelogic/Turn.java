@@ -12,11 +12,11 @@ import java.util.HashMap;
 
 public class Turn {
     private Question question;
-    private Game game;
+    private GameService game;
     private HashMap<Player, PlayerAnswer> playerAnswers;
     private HashMap<Player, Answer> selectedAnswers;
 
-    public Turn(Game game, Question question){
+    public Turn(GameService game, Question question){
         this.game = game;
         this.question = question;
     }
