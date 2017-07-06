@@ -7,6 +7,8 @@ import java.util.ArrayList;
  */
 
 public class Game {
+    public static final byte GAMEMODE_1 = 0;
+    public static final int GAMEMODE_2 = 1;
     public final int POINTS_FOR_CORRECT_ANSWER;
     public final int POINTS_FOR_DECEIVING;
     private ArrayList<Question> unusedQuestion; //TODO als Set!
@@ -29,6 +31,11 @@ public class Game {
 
     public void startGame(){
 
+    }
+
+    public ArrayList<Player> getPlayers(){
+        //TODO implement
+        return null;
     }
 
     public boolean isGameActive(){

@@ -39,7 +39,7 @@ public class Turn {
                 winners.add(player);
             } else {
                 //does not thorw ClassCastException because every answer that is not the correct answer is a PlayerAnswer
-                answerGivenBy =((PlayerAnswer) selectedAnswer).getPlayer;
+                answerGivenBy =((PlayerAnswer) selectedAnswer).getPlayer();
                 answerGivenBy.addPoints(game.POINTS_FOR_DECEIVING);
                 winners.add(answerGivenBy);
             }
