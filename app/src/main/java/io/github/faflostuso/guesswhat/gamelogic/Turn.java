@@ -12,11 +12,11 @@ import java.util.HashMap;
 
 public class Turn {
     private Question question;
-    private Game game;
+    private GameService game;
     private HashMap<Player, PlayerAnswer> playerAnswers;
     private HashMap<Player, Answer> selectedAnswers;
 
-    public Turn(Game game, Question question){
+    public Turn(GameService game, Question question){
         this.game = game;
         this.question = question;
     }
@@ -35,12 +35,12 @@ public class Turn {
             selectedAnswer = selectedAnswers.get(player);
 
             if(selectedAnswer == question.getAnswer()){
-                player.addPoints(game.POINTS_FOR_CORRECT_ANSWER);
+                player.addPoints(game.getPointsForCorrectAnswer());
                 winners.add(player);
             } else {
                 //does not thorw ClassCastException because every answer that is not the correct answer is a PlayerAnswer
-                answerGivenBy =((PlayerAnswer) selectedAnswer).getPlayer;
-                answerGivenBy.addPoints(game.POINTS_FOR_DECEIVING);
+                answerGivenBy =((PlayerAnswer) selectedAnswer).getPlayer();
+                answerGivenBy.addPoints(game.getPointsForDeceiving());
                 winners.add(answerGivenBy);
             }
         }

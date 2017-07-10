@@ -39,4 +39,17 @@ public class Player {
             throw new IllegalArgumentException("Number of Points must be positive!");
         }
     }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == null || !(o instanceof Player)){
+            return false;
+        } else {
+            if (((Player) o).getName() == this.name){
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
 }
