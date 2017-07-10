@@ -2,6 +2,7 @@ package io.github.faflostuso.guesswhat.gamelogic;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -18,9 +19,13 @@ public class GameService extends Service {
     private ArrayList<Player> players;
     private boolean gameActive;
     private byte gamemode;
+    private GameBinder binder;
 
     @Override
     public void onCreate() {
+        unusedQuestion = new ArrayList<Question>();
+
+
         pointsForCorrectAnswer = 3; //TODO aus Einstellungen richtigen Wert auslesen
         pointsForDeceiving = 3;
 
@@ -43,6 +48,7 @@ public class GameService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
+        //set gamemode if game is not active
         if (!gameActive){
              this.gamemode = intent.getByteExtra(GAMEMODE, (byte) 0 );
         }
@@ -51,10 +57,31 @@ public class GameService extends Service {
         return Service.START_STICKY;
     }
 
+    /**
+     * Class used for the client Binder, so clients can access public methods of GameService
+     */
+    public class GameBinder extends Binder {
+        public GameService getService() {
+            return GameService.this;
+        }
+    }
+
+    public int getPointsForCorrectAnswer() {
+        return pointsForCorrectAnswer;
+    }
+
+    public int getPointsForDeceiving() {
+        return pointsForDeceiving;
+    }
+
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
-        throw new UnsupportedOperationException("Not yet implemented");
+        return binder;
+    }
+
+    private void addQuestion(Question question){
+        //TODO exception werfen, wenn Frage schon vorhanden
+        unusedQuestion.add(question);
     }
 
     public void addPlayer(){
@@ -62,7 +89,7 @@ public class GameService extends Service {
     }
 
     public void startGame(){
-
+        this.gameActive = true;
     }
 
     public ArrayList<Player> getPlayers(){
@@ -72,11 +99,6 @@ public class GameService extends Service {
 
     public boolean isGameActive(){
         return this.isGameActive();
-    }
-
-    private void addQuestion(Question question){
-        //TODO exception werfen, wenn Frage schon vorhanden
-        unusedQuestion.add(question);
     }
 
 }

@@ -18,9 +18,11 @@
         </activity>
 
         <service
-            android:name="io.github.faflostuso.guesswhat.gamelogic.GameService"
+            android:name=".gamelogic.GameService"
             android:enabled="true"
-            android:exported="false"></service>
+            android:exported="false" />
+
+        <activity android:name=".AddPlayerActivity"></activity>
     </application>
 
 </manifest>

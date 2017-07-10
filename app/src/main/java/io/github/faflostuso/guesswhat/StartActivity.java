@@ -24,15 +24,17 @@ public class StartActivity extends AppCompatActivity {
     //on click listener for gamemode Buttons
     final View.OnClickListener gm1Button_OnClickListener = new View.OnClickListener() {
         public void onClick(final View v){
-            Intent i = new Intent(v.getContext(), io.github.faflostuso.guesswhat.gamelogic.GameService.class);
+            Intent serviceIntent = new Intent(v.getContext(), io.github.faflostuso.guesswhat.gamelogic.GameService.class);
+            Intent activityIntent = new Intent(v.getContext(), AddPlayerActivity.class);
 
             switch(v.getId()) {
                 case R.id.gamemode_1_button:
-                    i.putExtra(GameService.GAMEMODE, GameService.GAMEMODE_1);
+                    serviceIntent.putExtra(GameService.GAMEMODE, GameService.GAMEMODE_1);
                     break;
             }
 
-            startService(i);
+            startService(serviceIntent);
+            startActivity(activityIntent);
         }
     };
 }
