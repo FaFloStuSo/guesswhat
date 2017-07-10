@@ -4,6 +4,7 @@ import android.graphics.drawable.AnimatedStateListDrawable;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -48,5 +49,12 @@ public class Turn {
         return winners;
     }
 
+    public void setPlayerAnswer(Player player, Answer answer){
+
+    }
+
+    public ArrayList<PlayerAnswer> getPlayerAnswers(){
+        return new ArrayList<PlayerAnswer>(Arrays.asList((PlayerAnswer[]) this.playerAnswers.entrySet().toArray()));
+    }
 
 }
