@@ -7,6 +7,7 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import io.github.faflostuso.guesswhat.gamelogic.GameService;
 
@@ -27,6 +28,9 @@ public class AddPlayerActivity extends AppCompatActivity {
         //binding to game service
         Intent intent = new Intent(this, GameService.class);
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
+
+        //register listeners
+        findViewById(R.id.add_player_button).setOnClickListener(btnListener);
     }
 
     @Override
@@ -56,6 +60,17 @@ public class AddPlayerActivity extends AppCompatActivity {
         @Override
         public void onServiceDisconnected(ComponentName arg0) {
             mBound = false;
+        }
+    };
+
+    final View.OnClickListener btnListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.add_player_button:
+
+                    break;
+            }
         }
     };
 }
