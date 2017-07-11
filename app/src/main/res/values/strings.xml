@@ -3,4 +3,7 @@
     <string name="gamemode_1_button">Normales Spiel</string>
     <string name="settings_button">Settings</string>
     <string name="add_player_button">Add Player</string>
+
+    <string name="allowed_chars">Player names may only contain letters from A/a to Z/z and numbers.</string>
+    <string name="name_already_exists">A Player with this Name already exists.</string>
 </resources>

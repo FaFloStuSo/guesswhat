@@ -5,14 +5,13 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 
 import io.github.faflostuso.guesswhat.Exceptions.PlayerAlreadyExistsException;
 
 public class GameService extends Service {
-    public static final String GAMEMODE = "gamemode";
+    public static final String GAMEMODE = "mGamemode";
     public static final byte GAMEMODE_1 = 0;
     public static final byte GAMEMODE_2 = 1;
     private int pointsForCorrectAnswer;
@@ -20,18 +19,18 @@ public class GameService extends Service {
     private ArrayList<Question> unusedQuestion;
     private ArrayList<Player> players;
     private boolean mStarted;
-    private byte gamemode;
-    private GameBinder binder;
+    private byte mGamemode;
+    private final GameBinder mBinder = new GameBinder();
     //TODO wenn keine Activity im Vordergrund Service in Leiste tun
 
     @Override
     public void onCreate() {
         unusedQuestion = new ArrayList<Question>();
         players = new ArrayList<Player>();
+        mStarted = false;
 
         //shuffle questions to ensure unique game each time
         Collections.shuffle(unusedQuestion);
-
 
         //initiate some variables for developing purposes only!
         pointsForCorrectAnswer = 3; //TODO aus Einstellungen richtigen Wert auslesen
@@ -56,9 +55,9 @@ public class GameService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
-        //set gamemode if game is not active
+        //set mGamemode if game is not active
         if (!mStarted){
-             this.gamemode = intent.getByteExtra(GAMEMODE, (byte) 0 );
+             this.mGamemode = intent.getByteExtra(GAMEMODE, (byte) 0 );
         }
 
         //runs as long as it is not explicitly stopped
@@ -76,7 +75,7 @@ public class GameService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        return binder;
+        return mBinder;
     }
 
     private void addQuestion(Question question){

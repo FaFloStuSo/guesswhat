@@ -8,7 +8,12 @@ package io.github.faflostuso.guesswhat.gamelogic;
 public class Player {
 
     private String name;
-    private int points = 0;
+    private int points;
+
+    public Player(String name){
+        this.name = name;
+        this.points = 0;
+    }
 
     public String getName(){
         return name;
@@ -45,7 +50,7 @@ public class Player {
         if(o == null || !(o instanceof Player)){
             return false;
         } else {
-            if (((Player) o).getName() == this.name){
+            if (((Player) o).getName().equals(this.name)){
                 return true;
             } else {
                 return false;
