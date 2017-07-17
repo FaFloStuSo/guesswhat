@@ -57,7 +57,7 @@ public class GameService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId){
         //set mGamemode if game is not active
         if (!mStarted){
-             this.mGamemode = intent.getByteExtra(GAMEMODE, (byte) 0 );
+            this.mGamemode = intent.getByteExtra(GAMEMODE, (byte) 0 );
         }
 
         //runs as long as it is not explicitly stopped
@@ -119,3 +119,4 @@ public class GameService extends Service {
     }
 
 }
+

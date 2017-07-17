@@ -17,12 +17,16 @@
             </intent-filter>
         </activity>
 
+
+        <activity android:name=".SelectAnswerActivity"></activity>
+
         <service
             android:name=".gamelogic.GameService"
             android:enabled="true"
             android:exported="false" />
 
         <activity android:name=".AddPlayerActivity"></activity>
+        <activity android:name=".SelectAnswerActivity"></activity>
     </application>
 
 </manifest>
